@@ -1,14 +1,14 @@
 import { list } from "@keystone-next/keystone/schema";
-import {text, relationship, integer} from "@keystone-next/fields";
+import {text, relationship, select, integer} from "@keystone-next/fields";
 
-export const CartItem = list({
+export const OrderItem = list({
   fields: {
     quantity: integer({
       defaultValue: 1,
       isRequired: true
     }),
     productId: text({isRequired: true}),
-    cart: relationship({ref: 'Cart.cartItems'}),
-    cartId: text({isRequired: true})
+    price: integer(),
+    order: relationship({ref: 'Order.items'})
   },
 })

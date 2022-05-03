@@ -4,7 +4,8 @@ import { extendGraphqlSchema } from "./mutations";
 
 import { Cart } from "./schemas/Cart";
 import { CartItem } from "./schemas/CartItem";
-// import { extendGraphqlSchema } from "./mutations";
+import { OrderItem } from "./schemas/OrderItem";
+import { Order } from "./schemas/Order";
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/eCamellDB';
 
@@ -21,14 +22,16 @@ export default config({
   },
   lists: createSchema({
     Cart,
-    CartItem
+    CartItem,
+    OrderItem,
+    Order
   }),
-  extendGraphqlSchema: extendGraphqlSchema,
+  // extendGraphqlSchema: extendGraphqlSchema,
   ui: {
     // Show the UI to users that has access
     isAccessAllowed: ({ session }) => {
-      return true
-;    }
+      return true;
+    }
   },
   
 })
